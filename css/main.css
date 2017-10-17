@@ -1,0 +1,780 @@
+html {
+    color: #222;
+}
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.browserupgrade {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+#header {
+    padding: 0;
+    background: #1e2b33;
+}
+
+logo {
+    display: inline-block;
+    height: 48px;
+    width: 100%;
+    background: url("../img/logo.png") center center no-repeat;
+}
+
+#header icon {
+    font-size: 32px;
+}
+
+#header a.cta {
+    font-size: 14px;
+}
+
+
+
+
+
+#main {
+    padding-top: 0;
+    height: 700px;
+    background: url("../img/background/main.jpg") center bottom no-repeat;
+}
+
+#main card {
+    margin-top: 320px;
+}
+
+#main p {
+    font-weight: 400;
+    color: #202020;
+}
+
+
+
+
+
+#main-02 {
+    padding-top: 0;
+}
+
+.category {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    height: 320px;
+    border-bottom: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+} .category:last-of-type {
+    border-right: none;
+} .category:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: 50%;
+    bottom: 50%;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+} .category:hover:after {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.category-01 {
+    background: url("../img/main/home.jpg") center center no-repeat;
+} .category-01:after {
+    background: url("../img/main/home-hover.jpg") center center no-repeat;
+}
+
+
+.category-02 {
+    background: url("../img/main/business.jpg") center center no-repeat;
+} .category-02:after {
+    background: url("../img/main/business-hover.jpg") center center no-repeat;
+}
+
+
+.category-03 {
+    background: url("../img/main/medicine.jpg") center center no-repeat;
+} .category-03:after {
+    background: url("../img/main/medicine-hover.jpg") center center no-repeat;
+}
+
+
+.category-04 {
+    background: url("../img/main/training.jpg") center center no-repeat;
+} .category-04:after {
+    background: url("../img/main/training-hover.jpg") center center no-repeat;
+}
+
+#main-02 p {
+    font-weight: 400;
+    color: #202020;
+}
+
+
+
+
+
+#myrun p {
+    font-size: 16px;
+}
+
+wrapper.bordered column:nth-of-type(2n) {
+    border-left: 1px solid #e0e0e0;
+}
+
+wrapper.bordered column {
+    position: relative;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+photo {
+    display: inline-block;
+    width: 100%;
+}
+
+#myrun photo {
+    height: 360px;
+    background: url("../img/myrun/main.jpg") center center no-repeat;
+}
+
+#myrun photo:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: 50%;
+    bottom: 50%;
+    background: url("../img/myrun/hover.jpg") center center no-repeat;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+} #myrun photo:hover:after {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+button.play {
+    position: absolute;
+    top: calc(50% - 32px);
+    left: calc(50% - 32px);
+    height: 64px;
+    width: 64px;
+    border-radius: 50%;
+    border-top: 1px solid rgba(255,255,255, 0.75);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0, 0.50);
+} button.play:after {
+    content: "\f3de";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    font-family: "MaterialDesignIcons";
+    font-size: 32px;
+    line-height: 64px;
+    text-align: center;
+    color: white;
+}
+
+
+
+
+
+#offer-myrun {
+    padding: 32px 0;
+    background: #1e2b33;
+}
+
+#offer-myrun-photo {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+
+
+
+
+#home {
+    
+}
+
+row {
+    display: block;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+cell {
+    display: table-cell;
+    position: relative;
+    padding: 48px;
+    height: 480px;
+    width: 480px;
+    text-align: center;
+    vertical-align: middle;
+} cell:last-of-type {
+    border-left: 1px solid #e0e0e0;
+}
+
+cell p {
+    font-size: 16px;
+    text-align: justify;
+}
+
+cell.preview:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: 50%;
+    bottom: 50%;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+} cell.preview:hover:after {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+cover {
+    opacity: 0;
+    background: #1e2b33;
+} cover:hover {
+    opacity: 1;
+}
+
+cover p {
+    font-weight: 500;
+}
+
+#cross-personal {
+    background: url("../img/catalog/home/cross-personal.jpg") center center no-repeat;
+} #cross-personal:after {
+    background: url("../img/catalog/home/cross-personal-hover.jpg") center center no-repeat;
+}
+
+#unica-evolution {
+    background: url("../img/catalog/home/unica-evolution.jpg") center center no-repeat;
+} #unica-evolution:after {
+    background: url("../img/catalog/home/unica-evolution-hover.jpg") center center no-repeat;
+}
+
+#cross-kinesis {
+    background: url("../img/catalog/home/cross-kinesis.jpg") center center no-repeat;
+} #cross-kinesis:after {
+    background: url("../img/catalog/home/cross-kinesis-hover.jpg") center center no-repeat;
+}
+
+#kinesis-heritage {
+    background: url("../img/catalog/home/kinesis-heritage.jpg") center center no-repeat;
+} #kinesis-heritage:after {
+    background: url("../img/catalog/home/kinesis-heritage-hover.jpg") center center no-repeat;
+}
+
+#run-personal {
+    background: url("../img/catalog/home/run-personal.jpg") center center no-repeat;
+} #run-personal:after {
+    background: url("../img/catalog/home/run-personal-hover.jpg") center center no-repeat;
+}
+
+
+
+
+
+#offer-catalog {
+    padding: 32px 0;
+    background: url("../img/background/offer-catalog.jpg") center center no-repeat;
+    background-size: cover;
+}
+
+
+
+
+
+#fitness {
+    
+}
+
+#run-now {
+    background: url("../img/catalog/fitness/run-now.jpg") center center no-repeat;
+} #run-now:after {
+    background: url("../img/catalog/fitness/run-now-hover.jpg") center center no-repeat;
+}
+
+#chest-press {
+    background: url("../img/catalog/fitness/chest-press.jpg") center center no-repeat;
+} #chest-press:after {
+    background: url("../img/catalog/fitness/chest-press-hover.jpg") center center no-repeat;
+}
+
+#omnia {
+    background: url("../img/catalog/fitness/omnia.jpg") center center no-repeat;
+} #omnia:after {
+    background: url("../img/catalog/fitness/omnia-hover.jpg") center center no-repeat;
+}
+
+#group-cycle {
+    background: url("../img/catalog/fitness/group-cycle.jpg") center center no-repeat;
+} #group-cycle:after {
+    background: url("../img/catalog/fitness/group-cycle-hover.jpg") center center no-repeat;
+}
+
+#medicine {
+    
+}
+
+#run-med {
+    background: url("../img/catalog/medicine/run-med.jpg") center center no-repeat;
+} #run-med:after {
+    background: url("../img/catalog/medicine/run-med-hover.jpg") center center no-repeat;
+}
+
+#kinesis-personal {
+    background: url("../img/catalog/medicine/kinesis-personal.jpg") center center no-repeat;
+} #kinesis-personal:after {
+    background: url("../img/catalog/medicine/kinesis-personal-hover.jpg") center center no-repeat;
+}
+
+#kinesis-one {
+    background: url("../img/catalog/medicine/kinesis-one.jpg") center center no-repeat;
+} #kinesis-one:after {
+    background: url("../img/catalog/medicine/kinesis-one-hover.jpg") center center no-repeat;
+}
+
+#arke {
+    background: url("../img/catalog/medicine/arke.jpg") center center no-repeat;
+} #arke:after {
+    background: url("../img/catalog/medicine/arke-hover.jpg") center center no-repeat;
+}
+
+#flexability {
+    background: url("../img/catalog/medicine/flexability.jpg") center center no-repeat;
+} #flexability:after {
+    background: url("../img/catalog/medicine/flexability-hover.jpg") center center no-repeat;
+}
+
+#synchro-md {
+    background: url("../img/catalog/medicine/synchro-md.jpg") center center no-repeat;
+} #synchro-md:after {
+    background: url("../img/catalog/medicine/synchro-md-hover.jpg") center center no-repeat;
+}
+
+
+
+
+
+#offer-credit {
+    background: url("../img/background/offer-credit.jpg") center center no-repeat;
+    background-size: cover;
+}
+
+
+
+
+
+#badges {
+    
+}
+
+#badges p {
+    margin-top: 16px;
+    margin-bottom: 32px;
+    font-size: 16px;
+}
+
+
+
+
+
+#offer-business {
+    background: url("../img/background/offer-business.jpg") center center no-repeat;
+    background-size: cover;
+}
+
+#offer-business h3 {
+    text-transform: none;
+}
+
+
+
+
+
+#corporate {
+    
+}
+
+
+
+
+
+#private {
+    background: #f4f4f4;
+}
+
+
+
+
+
+#coaches {
+    
+}
+
+#coaches h4 {
+    margin-top: 24px;
+}
+
+#coaches p {
+    font-size: 16px;
+}
+
+
+
+
+
+#offer-consultation {
+    background: url("../img/background/offer-consultation.jpg") center center no-repeat;
+    background-size: cover;
+}
+
+#offer-consultation p {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.4;
+}
+
+
+
+
+
+#plan {
+    
+}
+
+#plan p {
+    margin-top: 16px;
+    margin-bottom: 24px;
+    font-size: 14px;
+}
+
+.step {
+    display: inline-block;
+    position: relative;
+    height: 128px;
+    width: 128px;
+    border-radius: 50%;
+}
+/*
+#step-01 {
+    background: url("../img/plan/01.png") center center no-repeat;
+}
+
+#step-02 {
+    background: url("../img/plan/02.png") center center no-repeat;
+}
+
+#step-03 {
+    background: url("../img/plan/03.png") center center no-repeat;
+}
+
+#step-04 {
+    background: url("../img/plan/04.png") center center no-repeat;
+}
+
+#step-05 {
+    background: url("../img/plan/05.png") center center no-repeat;
+}
+*/
+.step .point {
+    position: absolute;
+    top: calc(50% - 4px);
+    height: 8px;
+    width: 8px;
+    background: #bcbcbc;
+    border-radius: 50%;
+}
+
+.step .point:nth-of-type(1) {
+    left: calc(100% + 12px);
+}
+
+.step .point:nth-of-type(2) {
+    top: calc(50% - 2px);
+    left: calc(100% + 30px);
+    height: 4px;
+    width: 4px;
+}
+
+.step .point:nth-of-type(3) {
+    left: calc(100% + 44px);
+}
+
+
+
+
+
+#maps {
+    background: #f4f4f4;
+    color: #616161;
+}
+
+#maps h4 {
+    color: #202020;
+}
+
+#maps .info {
+    margin-top: 16px;
+    font-size: 14px;
+}
+
+
+
+
+
+#final {
+    padding-top: 0;
+    height: 700px;
+    background: url("../img/background/main.jpg") center bottom no-repeat;
+}
+
+#final card {
+    margin-top: 320px;
+}
+
+#final p {
+    font-weight: 400;
+    color: #202020;
+}
+
+
+
+
+#final-02 {
+    
+}
+
+#final-02 p {
+    font-weight: 400;
+    color: #202020;
+}
+
+
+
+
+
+#footer {
+    padding: 32px 0;
+    background: #36464e;
+}
+
+#footer icon {
+    font-size: 32px;
+}
+
+#footer a.cta {
+    font-size: 14px;
+}
+
+
+
+
+
+footer {
+    background: #1e2b33;
+}
+
+footer wrapper {
+    padding: 16px 0;
+}
+
+
+
+
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+.invisible {
+    opacity: 0;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* ==========================================================================
+   Print styles
+   ========================================================================== */
+
+@media print {
+    *,
+    *:before,
+    *:after {
+        background: transparent !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

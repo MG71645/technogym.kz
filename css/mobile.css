@@ -1,0 +1,207 @@
+@media only screen and (max-width: 768px) {
+    
+    wrapper {
+        width: 100%;
+        padding: 16px 0;
+    }
+    
+    column {
+        
+    }
+    
+    popup {
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        -moz-transform: translateX(-50%) translateY(-50%);
+        -ms-transform: translateX(-50%) translateY(-50%);
+        -o-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+    }
+    
+    .column-3,
+    .column-4,
+    .column-5,
+    .column-6,
+    .column-7,
+    .column-8,
+    .column-9,
+    .column-10,
+    .column-11,
+    .column-12 {
+        width: 100%;
+    }
+    
+    .mobile-hidden {
+        display: none;
+    }
+    
+    .mobile-only {
+        display: block;
+    }
+    
+    .mobile-full {
+        width: 100%;
+    }
+    
+    .mobile-text-center {
+        text-align: center;
+    }
+    
+    
+    
+    
+    
+    logo {
+        
+    }
+    
+    h1 {
+        margin-bottom: 16px;
+        font-size: 24px;
+    }
+    
+    h2 {
+        font-size: 18px;
+    }
+    
+    h3 {
+        font-size: 24px;
+    } h3 span {
+        font-size: 18px;
+    }
+    
+    
+    
+    
+    
+    #main {
+        background: none;
+    }
+    
+    #main card {
+        margin-top: 0;
+        box-shadow: none;
+    }
+    
+    
+    
+    
+    
+    #offer-myrun {
+        
+    }
+    
+    #offer-myrun img {
+        width: 100%;
+    }
+    
+    
+    
+    
+    
+    cell {
+        display: inline-block;
+        width: 100%;
+        height: auto;
+        padding: 32px 0;
+    }
+    
+    cell.preview {
+        padding: 100% 0 0;
+        background-size: contain !important;
+    } cell.preview:after {
+        background-size: cover !important;
+    }
+    
+    cell cover {
+        opacity: 1;
+        position: static;
+        height: auto;
+        width: auto;
+        padding: 32px 0;
+        background: none;
+    }
+    
+    cell cover.dark p {
+        color: black;
+    }
+    
+    cell p {
+        padding: 0 16px;
+    }
+    
+    
+    
+    
+    
+    #corporate {
+        
+    }
+    
+    #corporate img {
+        margin-top: 32px;
+    }
+    
+    
+    
+    
+    
+    #private {
+        
+    }
+    
+    #private img {
+        margin-top: 32px;
+    }
+    
+    
+    
+    
+    
+    #plan .fifth {
+        width: 100%;
+    }
+    
+    #plan .point {
+        display: none;
+    }
+    
+    
+    
+    
+    
+    #final {
+        background: none;
+    }
+    
+    #final card {
+        margin-top: 0;
+        box-shadow: none;
+    }
+    
+    
+    
+    
+    
+    #offer-consultation {
+        
+    }
+    
+    #offer-consultation button {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+    
+    
+    
+    
+    
+    #footer {
+        
+    }
+    
+    #footer small {
+        display: inline-block;
+        width: 100%;
+    }
+    
+}

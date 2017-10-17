@@ -1,0 +1,1225 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Technogym</title>
+        <meta name="description" content="Профессиональные тренажеры Technogym в наличии от официального дистрибьютора">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/mg.css">
+        <link rel="stylesheet" href="css/icons.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/mobile.css">
+        <link rel="stylesheet" href="css/animation.css">
+        <link rel="stylesheet" href="css/flipclock.css">
+
+        <!--script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script-->
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+        
+        <link rel="stylesheet" href="fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen"/>
+        <script type="text/javascript" src="fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+        <!-- Optionally add helpers - button, thumbnail and/or media -->
+        <link rel="stylesheet" href="fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+        <script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+        <script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+
+        <link rel="stylesheet" href="fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+        <script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+        
+		<script src="js/flipclock.min.js"></script>
+        
+		<script src="js/referer.js"></script>
+        
+        <!--script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.js"></script>
+        <script>
+            $().ready(function() {
+                $('form').each(function() {
+                    $(this).validate({
+                        rules: {
+                            name: {
+                                required: true,
+                                minlength: 2
+                            },
+                            phone: {
+                                required: true,
+                                minlength: 6
+                            },
+                            email: {
+                                required: true,
+                                email: true
+                            }
+                        },
+                        messages: {
+                            name: {
+                                required: "Заполните имя",
+                                minlength: "Имя должно содержать минимум 2 символа"
+                            },
+                            phone: {
+                                required: "Заполните телефон",
+                                minlength: "Слишком короткий телефон"
+                            },
+                            email: {
+                                required: "Заполните email",
+                                email: "Введите правильный email"
+                            }
+                        }
+                    });
+                });
+            });
+        </script-->
+        
+        <script>
+            function popup(id, trigger) {
+                $('popup input[name="trigger"]').val(trigger);
+                $('fade').removeClass('hidden');
+                $(id).removeClass('hidden');
+                $(id).css('background', '(url("../img/gallery/'+trigger+'.jpg');
+                setTimeout( function() {
+                    $('fade').addClass('show');
+                    $(id).addClass('show');
+                    $('popup input[name="name"]').focus();
+                }, 1 );
+            }
+            function popdown() {
+                $('fade').addClass('hidden').removeClass('show');
+                $('popup').each( function() {
+                    $(this).addClass('hidden').removeClass('show');
+                });
+            }
+        </script>
+        <script>
+            function scrollTo(elem) {
+                if(document.getElementById(elem)) {
+                    var destination = jQuery('#'+elem).offset().top-0;
+                    jQuery("html,body").animate({scrollTop: destination}, 500);
+                }
+            }
+        </script>
+        <script>
+            function AjaxPopupFormSend(formMain,url) {
+                if ( $('#send_phone').hasClass('used') ) {
+                    popdown();
+                } else {
+                    $('#popup_main_cta').prop('disabled', true);
+                    $('#popup_main_cta').prop('value', 'Отправка');
+                    jQuery.ajax({
+                        url: url,
+                        type: "POST",
+                        dataType: "html",
+                        data: jQuery("#"+formMain).serialize(),
+                        success: function(response) {
+                            //document.getElementById(result_id).innerHTML = response;
+                            setTimeout( function() {
+                                $('#slide-01').addClass('previous');
+                                $('#slide-02').removeClass('next');
+                            }, 1000 );
+                        },
+                        error: function(response) {
+                            //document.getElementById(result_id).innerHTML = "Возникла ошибка при отправке формы. Попробуйте еще раз";
+                            $('#popup_main_cta').prop('value', 'Ошибка');
+                            setTimeout( function() {
+                                $('#popup_main_cta').prop('disabled', false);
+                                $('#popup_main_cta').prop('value', 'Отправить');
+                            }, 1000 );
+                        }
+                    });
+                }
+            }
+            function AjaxFormSend(formMain,url,buttonId) {
+                var button = document.getElementById(buttonId);
+                button.disabled = true;
+                button.value = 'Отправка';
+                jQuery.ajax({
+                    url: url,
+                    type: "POST",
+                    dataType: "html",
+                    data: jQuery("#"+formMain).serialize(),
+                    success: function(response) {
+                        //document.getElementById(result_id).innerHTML = response;
+                        setTimeout( function() {
+                            button.value = 'Готово!';
+                        }, 1000 );
+                    },
+                    error: function(response) {
+                        //document.getElementById(result_id).innerHTML = "Возникла ошибка при отправке формы. Попробуйте еще раз";
+                        setTimeout( function() {
+                            button.value = 'Ошибка';
+                        }, 1000 );
+                    }
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <main>
+            <section id="header" class="dark mobile-hidden">
+                <wrapper>
+                    <column class="column-3 middle">
+                        <logo></logo>
+                    </column><column class="column-6 middle text-center">
+                        <small>
+                            Продажа и установка. Сервисное обслуживание тренажеров<br>
+                            Доставка по всему Казахстану
+                        </small>
+                    </column><column class="column-3 middle text-right">
+                        <icon class="icon-phone middle"></icon>
+                        <a href="tel: +77717788108" class="middle">+7 771 77 88 111</a><br>
+                        <a onclick="popup(popup_main, 'Бесплатная консультация в шапке')" class="cta">Бесплатная консультация</a>
+                    </column>
+                </wrapper>
+            </section>
+            
+            <section id="main" class="">
+                <wrapper class="text-center">
+                    <h1 class="animated">Профессиональные тренажеры Technogym</h1>
+                    <h2 class="animated">в наличии от официального дистрибьютора</h2>
+                    <img src="img/background/main.jpg" width="100%" class="mobile-only">
+                    <column class="column-6 animated from-bottom">
+                        <card class="full">
+                            <p>
+                                Оставьте заявку и получите выгодные условия<br>
+                                <b>покупки тренажера в кредит</b>
+                            </p>
+                            <button class="cta" onclick="popup(popup_main, 'Получить условия покупки в кредит без переплаты на главной')">Оставить заявку</button>
+                        </card>
+                    </column>
+                </wrapper>
+            </section>
+            
+            <!--section id="main-02" class="">
+                <wrapper class="text-center">
+                    <h1>Профессиональные тренажеры Technogym</h1>
+                    <h2>в наличии от официального дистрибьютора</h2>
+                </wrapper>
+                <wrapper class="text-center">
+                    <div class="category category-01 column-3" onclick="scrollTo('home')">
+                    </div><div class="category category-02 column-3" onclick="scrollTo('business')">
+                    </div><div class="category category-03 column-3" onclick="scrollTo('medicine')">
+                    </div><div class="category category-04 column-3" onclick="scrollTo('private')"></div>
+                    <column class="column-6">
+                        <card class="full">
+                            <p>
+                                Оставьте заявку и получите выгодные условия<br>
+                                <b>покупки тренажера в кредит без переплаты</b>
+                            </p>
+                            <button class="cta" onclick="popup(popup_main, 'Получить условия покупки в кредит без переплаты на главной')">Оставить заявку</button>
+                        </card>
+                    </column>
+                </wrapper>
+            </section-->
+            
+            <section id="myrun" class="">
+                <wrapper class="text-center">
+                    <margin>
+                        <h3>
+                            Хит продаж - Беговая дорожка для дома<br>
+                            <span>MYRUN Technogym</span>
+                        </h3>
+                    </margin>
+                </wrapper>
+                <wrapper>
+                    <column class="column-4 text-center">
+                        <margin>
+                            <img src="img/myrun/01.jpg">
+                            <h4>
+                                Готовность к бегу<br>
+                                за 5 минут
+                            </h4>
+                            <p>
+                                Процесс самостоятельной сборки невероятно прост и занимает несколько минут
+                            </p>
+                        </margin>
+                    </column><column class="column-4 text-center">
+                        <margin>
+                            <img src="img/myrun/02.jpg">
+                            <h4>
+                                Собственное приложение
+                            </h4>
+                            <p>
+                                Дорожка легко синхронизируется с вашим планшетом. При помощи приложения вы планируете упражнения,
+                                программы и маршруты в соответствии с вашими потребностями
+                            </p>
+                        </margin>
+                    </column><column class="column-4 text-center">
+                        <margin>
+                            <img src="img/myrun/03.jpg">
+                            <h4>
+                                Бесшумный, но<br>
+                                мощный
+                            </h4>
+                            <p>Ровный и бесшумный бег даже при скорости 20 км в час</p>
+                        </margin>
+                    </column>
+                </wrapper>
+                <wrapper class="bordered">
+                    <column class="column-4">
+                        <photo></photo>
+                    </column><column class="column-8">
+                        <video id="video" width="100%" heigth="360" poster="video/myrun/video.jpg">
+                            <source src="video/myrun/video.mp4">
+                        </video>
+                        <button class="cta play" onclick="$('video').play();"></button>
+                    </column>
+                </wrapper>
+            </section>
+            
+            <section id="offer-myrun" class="dark">
+                <wrapper>
+                    <column class="column-6">
+                        <margin>
+                            <img src="img/offer-myrun.png">
+                            <br><br>
+                            <button class="cta" onclick="popup(popup_main, 'MYRUN. Получить выгодные условия от официального дистрибьютора')">Оставить заявку</button>
+                        </margin>
+                    </column>
+                    <img id="offer-myrun-photo" src="img/myrun/offer.jpg" class="mobile-hidden">
+                </wrapper>
+            </section>
+            
+            <section id="home">
+                <wrapper class="text-center">
+                    <margin>
+                        <h3>Решения для дома</h3>
+                    </margin>
+                </wrapper>
+                <wrapper class="text-center">
+                    <margin>
+                        Тренажеры Technogym используются в более чем 20 000 частных домов. В самых разных странах мира на них занимается
+                        более 15 миллионов человек. Проверенное качество и долговечность всех моделей оборудования, выпускаемого компанией,
+                        делают ее №1 при выборе спортивных тренажеров.
+                    </margin>
+                </wrapper>
+                <wrapper>
+                    <row>
+                        <cell class="preview" id="run-personal"></cell>
+                        <cell>
+                            <h4>Run Personal</h4>
+                            <p>
+                                Отличные функциональные характеристики совмещаются в тренажере с удобством тренинга,
+                                большим набором тренировочных программ и великолепным дизайном Антонио Читтерио.
+                            </p>
+                            <p>
+                                Оснащена сенсорным экраном и использует самую последнюю версию Android.
+                            </p>
+                            <cover class="dark smooth">
+                                <cell>
+                                    <p class="text-center">
+                                        Оставьте заявку и <b>получите выгодные условия</b> от официального дистрибьютора
+                                    </p>
+                                    <button class="cta" onclick="popup(popup_main, 'Run Personal')">Оставить заявку</button>
+                                </cell>
+                            </cover>
+                        </cell>
+                    </row>
+                    <row>
+                        <cell id="cross-personal" class="preview mobile-only"></cell>
+                        <cell>
+                            <h4>Cross Personal</h4>
+                            <p>
+                                Тренажер объединяет все новейшие разработки компании Technogym для наиболее комфортного и
+                                эффективного тренинга.
+                            </p>
+                            <p>
+                                Предназначен для высокоэффективного аэробного тренинга верхней и нижней части тела,
+                                улучшает координацию и чувство равновесия.
+                            </p>
+                            <cover class="dark smooth">
+                                <cell>
+                                    <p class="text-center">
+                                        Оставьте заявку и <b>получите выгодные условия</b> от официального дистрибьютора
+                                    </p>
+                                    <button class="cta" onclick="popup(popup_main, 'Cross Personal')">Оставить заявку</button>
+                                </cell>
+                            </cover>
+                        </cell>
+                        <cell id="cross-personal" class="preview mobile-hidden"></cell>
+                    </row>
+                    <row>
+                        <cell class="preview" id="unica-evolution"></cell>
+                        <cell>
+                            <h4>Unica Revolution</h4>
+                            <p>
+                                Благодаря эксклюзивной рычажной системе можно выполнять свыше 25 различных упражнений,
+                                меняя только нужную нагрузку.
+                            </p>
+                            <p>
+                                Тренажер очень компактный: для его размещения требуется всего полтора квадратных метра.
+                            </p>
+                            <cover class="dark smooth">
+                                <cell>
+                                    <p class="text-center">
+                                        Оставьте заявку и <b>получите выгодные условия</b> от официального дистрибьютора
+                                    </p>
+                                    <button class="cta" onclick="popup(popup_main, 'Unica Revolution')">Оставить заявку</button>
+                                </cell>
+                            </cover>
+                        </cell>
+                    </row>
+                    <row>
+                        <cell id="kinesis-heritage" class="preview mobile-only"></cell>
+                        <cell>
+                            <h4>Kinesis Heritage</h4>
+                            <p>
+                                Тренажер позволяет выполнять практически любые возможные упражнения на все группы мышц тела,
+                                не ограничивая при этом траекторию и амплитуду движения.
+                            </p>
+                            <p>
+                                Эргономичность и компактность тренажера позволяют устанавливать его даже в небольших помещениях.
+                            </p>
+                            <cover class="dark smooth">
+                                <cell>
+                                    <p class="text-center">
+                                        Оставьте заявку и <b>получите выгодные условия</b> от официального дистрибьютора
+                                    </p>
+                                    <button class="cta" onclick="popup(popup_main, 'Kinesis Heritage')">Оставить заявку</button>
+                                </cell>
+                            </cover>
+                        </cell>
+                        <cell id="kinesis-heritage" class="preview mobile-hidden"></cell>
+                    </row>
+                </wrapper>
+            </section>
+            
+            <section id="offer-catalog" class="dark">
+                <wrapper class="text-center">
+                    <margin>
+                        <column class="column-8">
+                            <h4>
+                                Закажите каталог тренажеров Technogym
+                                с фотографиями и подробными характеристиками
+                            </h4>
+                        </column>
+                    </margin>
+                    <column class="column-4">
+                        <margin>
+                            <form id="offer-catalog-form">
+                                <mg-input icon="account">
+                                    <input type="text" name="name" placeholder="Имя:">
+                                </mg-input>
+                                <mg-input icon="email">
+                                    <input type="email" name="email" placeholder="Email:">
+                                </mg-input>
+                                <mg-input icon="phone">
+                                    <input type="tel" name="phone" placeholder="Телефон:">
+                                </mg-input>
+                                <input type="hidden" name="trigger" value="Закажите каталог Technogym">
+                                <input id="offer-catalog-cta" type="button" value="Оставить заявку" onclick="AjaxFormSend('offer-catalog-form', 'callback.php', 'offer-catalog-cta')">
+                            </form>
+                        </margin>
+                    </column>
+                </wrapper>
+            </section>
+            
+            <section id="fitness">
+                <wrapper class="text-center">
+                    <margin>
+                        <h3>Решения для фитнесс-клубов и отелей</h3>
+                    </margin>
+                </wrapper>
+                <wrapper class="text-center">
+                    <margin>
+                        Купить тренажеры Technogym – сделать наилучшее вложение средств в спортивное оборудование.<br>
+                        <br>
+                        Среди клиентов компании такие престижные профессиональные команды как "Феррари" Формулы-1,
+                        парусные клубы Alinghi и Luna Rossa, а также футбольные клубы «Челси» и «Милан».
+                    </margin>
+                </wrapper>
+                <wrapper>
+                    <row>
+                        <cell class="preview" id="run-now"></cell>
+                        <cell>
+                            <h4>Run Now</h4>
+                            <p>
+                                Профессиональная беговая дорожка с низким уровнем энергопотребления способна развивать скорость
+                                до 27 км/ч при максимальном уровне наклона бегового полотна в 18 градусов.
+                            </p>
+                            <p>
+                                Трехуровневая система безопасности снижает вероятность получения травмы при непредвиденных
+                                обстоятельствах.
+                            </p>
+                            <cover class="dark smooth">
+                                <cell>
+                                    <p class="text-center">
+                                        Оставьте заявку и <b>получите выгодные условия</b> от официального дистрибьютора
+                                    </p>
+                                    <button class="cta" onclick="popup(popup_main, 'Run Now')">Оставить заявку</button>
+                                </cell>
+                            </cover>
+                        </cell>
+                    </row>
+                    <row>
+                        <cell id="chest-press" class="preview mobile-only"></cell>
+                        <cell>
+                            <h4>Chest Press</h4>
+                            <p>
+                                Благодаря четырехзвенной раме осуществляется прямой перенос груза к пользователю и
+                                улучшаются ощущения во время движения.
+                            </p>
+                            <p>
+                                Выполнен согласно высочайшим стандартам биомеханики, эргономики, долговечности и безопасности
+                                для обеспечения самого высокого качества процесса и результатов.
+                            </p>
+                            <cover class="dark smooth">
+                                <cell>
+                                    <p class="text-center">
+                                        Оставьте заявку и <b>получите выгодные условия</b> от официального дистрибьютора
+                                    </p>
+                                    <button class="cta" onclick="popup(popup_main, 'Chest Press')">Оставить заявку</button>
+                                </cell>
+                            </cover>
+                        </cell>
+                        <cell id="chest-press" class="preview mobile-hidden"></cell>
+                    </row>
+                    <row>
+                        <cell class="preview" id="group-cycle"></cell>
+                        <cell>
+                            <h4>Group Cycle</h4>
+                            <p>
+                                Предназначен для высокоэффективного аэробного тренинга с максимально полным ощущением
+                                езды на велосипеде в естественных условиях.
+                            </p>
+                            <p>
+                                Позволяет проводить настоящие велотренировки в домашних условиях как начинающим пользователям,
+                                так и профессиональным велогонщикам.
+                            </p>
+                            <p>
+                                Не требует подключения к электричеству, легко передвигается и чистится.
+                            </p>
+                            <cover class="dark smooth">
+                                <cell>
+                                    <p class="text-center">
+                                        Оставьте заявку и <b>получите выгодные условия</b> от официального дистрибьютора
+                                    </p>
+                                    <button class="cta" onclick="popup(popup_main, 'Group Cycle')">Оставить заявку</button>
+                                </cell>
+                            </cover>
+                        </cell>
+                    </row>
+                    <row>
+                        <cell id="omnia" class="preview mobile-only"></cell>
+                        <cell>
+                            <h4>Omnia</h4>
+                            <p>
+                                Это новый комплекс для функционального тренинга, который максимизирует взаимодействие
+                                атлетов во время тренировки.
+                            </p>
+                            <p>
+                                Комплексы устроены таким образом, чтобы проводить одновременные тренировки силы, выносливости,
+                                координации, гибкости сразу нескольких человек.
+                            </p>
+                            <cover class="dark smooth">
+                                <cell>
+                                    <p class="text-center">
+                                        Оставьте заявку и <b>получите выгодные условия</b> от официального дистрибьютора
+                                    </p>
+                                    <button class="cta" onclick="popup(popup_main, 'Omnia')">Оставить заявку</button>
+                                </cell>
+                            </cover>
+                        </cell>
+                        <cell id="omnia" class="preview mobile-hidden"></cell>
+                    </row>
+                </wrapper>
+            </section>
+            
+            <section id="medicine">
+                <wrapper class="text-center">
+                    <margin>
+                        <h3>Решения для медицинских учреждений</h3>
+                    </margin>
+                </wrapper>
+                <wrapper class="text-center">
+                    <margin>
+                        Абсолютно все силовые тренажеры компании Technogym, начиная с простейших домашних тренажеров и
+                        заканчивая сверхсложными медицинскими станциями, оснащены технологией “Biomotion”.<br>
+                        <br>
+                        Это технология для биомеханики движений, делающая их естественными, анатомически выверенными и
+                        легкими даже для людей с функциональными ограничениями.
+                    </margin>
+                </wrapper>
+                <wrapper>
+                    <row>
+                        <cell class="preview" id="run-med"></cell>
+                        <cell>
+                            <h4>Excite®+ Run MED</h4>
+                            <p>
+                                Беговая дорожка с сертификатом для применения в медицинских целях разработана для
+                                реабилитации и спортивной подготовки.
+                            </p>
+                            <p>
+                                Она идеально подходит как для использования в медучреждениях так и для клубов, которые
+                                хотят включить в число услуг расширенную медицинскую оценку физического состояния
+                            </p>
+                            <cover class="dark smooth">
+                                <cell>
+                                    <p class="text-center">
+                                        Оставьте заявку и <b>получите выгодные условия</b> от официального дистрибьютора
+                                    </p>
+                                    <button class="cta" onclick="popup(popup_main, 'Run MED')">Оставить заявку</button>
+                                </cell>
+                            </cover>
+                        </cell>
+                    </row>
+                    <row>
+                        <cell id="kinesis-one" class="preview mobile-only"></cell>
+                        <cell>
+                            <h4>Kinesis One</h4>
+                            <p>
+                                Простое в использовании оборудование, объединяющее преимущества функциональных силовых
+                                тренажеров с простотой традиционного оборудования, что обеспечивает постепенный переход
+                                от направленных и простых упражнений к более свободным и естественным движениям.
+                            </p>
+                            <cover class="dark smooth">
+                                <cell>
+                                    <p class="text-center">
+                                        Оставьте заявку и <b>получите выгодные условия</b> от официального дистрибьютора
+                                    </p>
+                                    <button class="cta" onclick="popup(popup_main, 'Kinesis One')">Оставить заявку</button>
+                                </cell>
+                            </cover>
+                        </cell>
+                        <cell id="kinesis-one" class="preview mobile-hidden"></cell>
+                    </row>
+                    <row>
+                        <cell class="preview" id="arke"></cell>
+                        <cell>
+                            <h4>ARKE Functional Kit</h4>
+                            <p>
+                                Данный набор состоит из 22 предметов и представляет безграничные возможности для
+                                функциональной тренировки, направленной на улучшение координации, устойчивости,
+                                равновесия, гибкости и эластичности.
+                            </p>
+                            <cover class="dark smooth">
+                                <cell>
+                                    <p class="text-center">
+                                        Оставьте заявку и <b>получите выгодные условия</b> от официального дистрибьютора
+                                    </p>
+                                    <button class="cta" onclick="popup(popup_main, 'ARKE Functional Kit')">Оставить заявку</button>
+                                </cell>
+                            </cover>
+                        </cell>
+                    </row>
+                    <row>
+                        <cell id="flexability" class="preview mobile-only"></cell>
+                        <cell>
+                            <h4>FLEXability</h4>
+                            <p>
+                                Позволяет эффективно растягивать мышцы передней и задней поверхности бедра с исключительными
+                                ощущениями комфорта, безопасности и простоты использования.
+                            </p>
+                            <p>
+                                Благодаря эксклюзивной системе Selflex (патент заявлен) можно мягко регулировать степень растяжения
+                                мышц под постепенным и пропорциональным воздействием собственного веса, избегая тем самым
+                                потенциально опасных ситуаций.
+                            </p>
+                            <cover class="dark smooth">
+                                <cell>
+                                    <p class="text-center">
+                                        Оставьте заявку и <b>получите выгодные условия</b> от официального дистрибьютора
+                                    </p>
+                                    <button class="cta" onclick="popup(popup_main, 'FLEXability')">Оставить заявку</button>
+                                </cell>
+                            </cover>
+                        </cell>
+                        <cell id="flexability" class="preview mobile-hidden"></cell>
+                    </row>
+                    <!--row>
+                        <cell class="preview" id="synchro-md"></cell>
+                        <cell>
+                            <h4>Synchro MD</h4>
+                            <p>
+                                Тренажер Synchro воспроизводит движения тела во время ходьбы или бега.
+                            </p>
+                            <p>
+                                Естественные эллиптические движения без рывков предотвращают нагрузку на суставы,
+                                обеспечивая при этом чрезвычайно эффективную тренировку сердечно-сосудистой системы.
+                            </p>
+                            <cover class="dark smooth">
+                                <cell>
+                                    <p class="text-center">
+                                        Оставьте заявку и <b>получите выгодные условия</b> от официального дистрибьютора
+                                    </p>
+                                    <button class="cta" onclick="popup(popup_main, 'Synchro MD')">Оставить заявку</button>
+                                </cell>
+                            </cover>
+                        </cell>
+                    </row-->
+                </wrapper>
+            </section>
+            
+            <section id="offer-credit" class="dark">
+                <wrapper class="text-center">
+                    <column class="column-6 middle text-left">
+                        <margin>
+                            <h3>Оставьте заявку</h3>
+                            <br>
+                            и получите выгодные условия покупки
+                            тренажера <b>в кредит без переплаты</b>
+                        </margin>
+                    </column><column class="column-4 middle">
+                        <margin>
+                            <form id="offer-credit-form">
+                                <mg-input icon="account">
+                                    <input type="text" name="name" placeholder="Имя:">
+                                </mg-input>
+                                <mg-input icon="phone">
+                                    <input type="tel" name="phone" placeholder="Телефон:">
+                                </mg-input>
+                                <input type="hidden" name="trigger" value="Выгодные условия покупки в кредит без переплаты">
+                                <input id="offer-credit-cta" type="button" value="Оставить заявку" onclick="AjaxFormSend('offer-credit-form', 'callback.php', 'offer-credit-cta')">
+                            </form>
+                        </margin>
+                    </column>
+                </wrapper>
+            </section>
+            
+            <section id="badges">
+                <wrapper class="text-center">
+                    <margin>
+                        <h3 class="animated">
+                            <span>
+                                Почему клиенты довольны нашей работой и рекомендуют нас своим партнерам
+                            </span>
+                        </h3>
+                    </margin>
+                </wrapper>
+                <wrapper class="text-center">
+                    <column class="column-10 animated">
+                        <margin>
+                            Компания WELLNESS SOLUTIONS является эксклюзивным дистрибьютором ведущего мирового
+                            производителя Wellness оборудования на территории Казахстана и Кыргызстана
+                        </margin>
+                    </column>
+                </wrapper>
+                <wrapper>
+                    <column class="column-3 text-center">
+                        <margin>
+                            <img src="img/badge/01.png">
+                            <br>
+                            <p>
+                                Официальный дистрибьютор - гарантия качества и оригинальная продукция
+                            </p>
+                        </margin>
+                    </column><column class="column-3 text-center">
+                        <margin>
+                            <img src="img/badge/07.png" delay="0.20s">
+                            <br>
+                            <p>
+                                Профессиональная команда сотрудников
+                            </p>
+                        </margin>
+                    </column><column class="column-3 text-center">
+                        <margin>
+                            <img src="img/badge/04.png" delay="0.40s">
+                            <br>
+                            <p>
+                                Сервисное обслуживание по всему Казахстану
+                            </p>
+                        </margin>
+                    </column><column class="column-3 text-center">
+                        <margin>
+                            <img src="img/badge/03.png" delay="0.60s">
+                            <br>
+                            <p>
+                                Бесплатная доставка и сборка  во всех регионах Казахстана
+                            </p>
+                        </margin>
+                    </column><column class="column-3 text-center">
+                        <margin>
+                            <img src="img/badge/05.png" delay="0.30s">
+                            <br>
+                            <p>
+                                Основные позиции всегда в наличии
+                            </p>
+                        </margin>
+                    </column><column class="column-3 text-center">
+                        <margin>
+                            <img src="img/badge/06.png" delay="0.50s">
+                            <br>
+                            <p>
+                                Все тренажеры<br>
+                                новые и в упаковке. Они никогда не стояли на демонстрационных стендах, витринах или выставках
+                            </p>
+                        </margin>
+                    </column><column class="column-3 text-center">
+                        <margin>
+                            <img src="img/badge/02.png" delay="0.70s">
+                            <br>
+                            <p>
+                                Гарантийный период на оборудование – 24 месяца
+                            </p>
+                        </margin>
+                    </column><column class="column-3 text-center">
+                        <margin>
+                            <img src="img/badge/08.png" delay="0.90s">
+                            <br>
+                            <p>
+                                Склад запасных частей
+                            </p>
+                        </margin>
+                    </column>
+                </wrapper>
+            </section>
+            
+            <section id="offer-business" class="dark">
+                <wrapper class="text-center">
+                    <margin>
+                        <h3>Technogym для Вашего бизнеса</h3>
+                    </margin>
+                </wrapper>
+                <wrapper class="text-center">
+                    <margin>
+                        <column class="column-10">
+                            Если вы планируете открыть фитнес-клуб или тренажерный зал, наши специалисты помогут в разработке концепции
+                            и зонировании, визуализируют проект и подготовят лучшее решение с учетом Ваших пожеланий и целей.
+                        </column><br>
+                        <br>
+                        <br>
+                        <b>
+                            Для этого достаточно оставить заявку ниже.<br>
+                            Выезд специалиста на Ваш объект БЕСПЛАТНО
+                        </b>
+                    </margin>
+                    <br>
+                    <column class="column-4">
+                        <margin>
+                            <form id="offer-business-form">
+                                <mg-input icon="account">
+                                    <input type="text" name="name" placeholder="Имя:">
+                                </mg-input>
+                                <mg-input icon="phone">
+                                    <input type="tel" name="phone" placeholder="Телефон:">
+                                </mg-input>
+                                <input type="hidden" name="trigger" value="Technogym для Вашего бизнеса">
+                                <input id="offer-business-cta" type="button" value="Оставить заявку" onclick="AjaxFormSend('offer-business-form', 'callback.php', 'offer-business-cta')">
+                            </form>
+                        </margin>
+                    </column>
+                </wrapper>
+            </section>
+            
+            <section id="corporate">
+                <wrapper class="text-center">
+                    <margin>
+                        <h3 class="animated">
+                            <span>
+                                Мы предлагаем семинары и
+                                обучающие программы, которые проводятся для:
+                            </span>
+                        </h3>
+                    </margin>
+                </wrapper>
+                <wrapper class="text-center">
+                    <column class="column-6 middle text-left animated from-right">
+                        <margin>
+                            <ul>
+                                <li>
+                                    Фитнес-инструкторов
+                                </li>
+                                <li>
+                                    Персональных тренеров
+                                </li>
+                                <li>
+                                    Управляющих фитнес-клубами
+                                </li>
+                                <li>
+                                    Менеджеров реабилитационных центров
+                                </li>
+                                <li>
+                                    Физиотерапевтов
+                                </li>
+                            </ul>
+                            <div class="mobile-text-center">
+                                <button class="cta" onclick="popup(popup_main, 'Корпоративным клиентам')">Узнать подробнее</button>
+                            </div>
+                        </margin>
+                    </column><column class="column-4 middle">
+                        <img src="img/corporate.png">
+                    </column>
+                </wrapper>
+            </section>
+            
+            <section id="private">
+                <wrapper class="text-center">
+                    <margin>
+                        <h3 class="animated">
+                            <span>
+                                Частным клиентам мы предлагаем выездные занятия с
+                                персональным мастер-тренером Technogym
+                            </span>
+                        </h3>
+                    </margin>
+                </wrapper>
+                <wrapper class="text-center">
+                    <column class="column-6 middle text-left animated from-right">
+                        <margin>
+                            <ul>
+                                <li>
+                                    Составление индивидуальных тренировочных программ
+                                </li>
+                                <li>
+                                    Тренировки с различными категориями клиентов: женщины, мужчины, пожилые люди
+                                </li>
+                                <li>
+                                    Лечебная физкультура при заболеваниях позвоночника
+                                </li>
+                                <li>
+                                    Подготовка к соревнованиям
+                                </li>
+                                <li>
+                                    Набор мышечной массы
+                                </li>
+                                <li>
+                                    Тренировки по снижению веса
+                                </li>
+                            </ul>
+                            <div class="mobile-text-center">
+                                <button class="cta" onclick="popup(popup_main, 'Частным клиентам')">Узнать подробнее</button>
+                            </div>
+                        </margin>
+                    </column><column class="column-4 middle">
+                        <img src="img/private.png">
+                    </column>
+                </wrapper>
+            </section>
+            
+            <section id="coaches">
+                <wrapper class="text-center">
+                    <margin class="animated">
+                        В Вашем распоряжении старшие международные тренеры, эксперты, предоставляющие консультационные
+                        услуги и обучение, а также индивидуальные бизнес-решения коммерческим клубам, общественным
+                        спортзалам, корпоративным оздоровительным заведениям, гостиничным центрам досуга и медицинским
+                        оздоровительным центрам.
+                    </margin>
+                </wrapper>
+                <wrapper>
+                    <column class="column-4 text-center">
+                        <margin>
+                            <img src="img/coach/01.png">
+                            <h4 delay="0.30s">Леонид Мехедько</h4>
+                            <p delay="0.30s">
+                                мастер-тренер Technogym
+                            </p>
+                        </margin>
+                    </column><column class="column-4 text-center">
+                        <margin>
+                            <img src="img/coach/02.png" delay="0.30s">
+                            <h4 delay="0.60s">Грант Паулес</h4>
+                            <p delay="0.60s">
+                                ведущий международный<br>
+                                мастер-тренер Technogym
+                            </p>
+                        </margin>
+                    </column><column class="column-4 text-center">
+                        <margin>
+                            <img src="img/coach/03.png" delay="0.60s">
+                            <h4 delay="0.90s">Наталья Ким</h4>
+                            <p delay="0.90s">
+                                мастер-тренер по реабилитации
+                            </p>
+                        </margin>
+                    </column>
+                </wrapper>
+            </section>
+            
+            <section id="offer-consultation" class="dark">
+                <wrapper class="text-center">
+                    <margin>
+                        Тренинги проходят в интерактивном формате, где совмещаются теоретические советы, обсуждение,
+                        практическая демонстрация и проигрывание реальных сценариев.
+                    </margin>
+                </wrapper>
+                <wrapper class="text-center">
+                    <margin>
+                        <p>
+                            Вы можете записаться на консультацию<br>
+                            мастер-тренера Technogym
+                        </p>
+                        <button class="cta" onclick="popup(popup_main, 'Записаться на консультацию')">Записаться на консультацию</button>
+                    </margin>
+                </wrapper>
+            </section>
+            
+            <section id="plan">
+                <wrapper class="text-center">
+                    <h3 class="animated">Как мы работаем</h3>
+                </wrapper>
+                <wrapper>
+                    <column class="fifth text-center">
+                        <margin>
+                            <div id="step-01" class="step">
+                                <img src="img/plan/01.png">
+                                <div class="point"></div>
+                                <div class="point"></div>
+                                <div class="point"></div>
+                            </div>
+                            <p>
+                                Вы оставляете заявку на сайте или по звонку
+                            </p>
+                            <button class="cta small" onclick="popup(popup_main, 'Как мы работаем')">Оставить заявку</button>
+                        </margin>
+                    </column><column class="fifth text-center">
+                        <margin>
+                            <div id="step-02" class="step">
+                                <img src="img/plan/02.png">
+                                <div class="point"></div>
+                                <div class="point"></div>
+                                <div class="point"></div>
+                            </div>
+                            <p>
+                                Мы расчитываем варианты
+                            </p>
+                        </margin>
+                    </column><column class="fifth text-center">
+                        <margin>
+                            <div id="step-03" class="step">
+                                <img src="img/plan/03.png">
+                                <div class="point"></div>
+                                <div class="point"></div>
+                                <div class="point"></div>
+                            </div>
+                            <p>
+                                Вы выбираете лучший
+                            </p>
+                        </margin>
+                    </column><column class="fifth text-center">
+                        <margin>
+                            <div id="step-04" class="step">
+                                <img src="img/plan/04.png">
+                                <div class="point"></div>
+                                <div class="point"></div>
+                                <div class="point"></div>
+                            </div>
+                            <p>
+                                Мы осуществляем доставку и сборку
+                            </p>
+                        </margin>
+                    </column><column class="fifth text-center">
+                        <margin>
+                            <div id="step-05" class="step">
+                                <img src="img/plan/05.png">
+                            </div>
+                            <p>
+                                Вы получаете гарантию
+                            </p>
+                        </margin>
+                    </column>
+                </wrapper>
+            </section>
+            
+            <section id="maps">
+                <wrapper class="text-center">
+                    <margin>
+                        Мы предлагаем уникальную возможность увидеть и опробовать несколько десятков тренажеров компании
+                        Technogym. Для тест-драйва и сравнения любого типа спортивного оборудования вам нужно только приехать
+                        по указанным адресам.
+                    </margin>
+                </wrapper>
+                <wrapper>
+                    <margin>
+                        <h4>Алматы</h4>
+                    </margin>
+                    <column class="column-7">
+                        <margin>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5695.617014176158!2d76.96652504986059!3d43.21855379232501!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDPCsDEzJzA3LjciTiA3NsKwNTgnMTAuOSJF!5e0!3m2!1sru!2skz!4v1455183737500" width="100%" height="252" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        </margin>
+                    </column><column class="column-5">
+                        <margin>
+                            <img src="img/almaty.jpg" width="240">
+                            <div class="info">
+                                <b>Время работы: 9:30 - 18:30</b><br>
+                                ул. Таттимбета, 88 В<br>
+                                +7 727 357-20-20, +7 771 77 88 111
+                            </div>
+                        </margin>
+                    </column><br>
+                    <br>
+                    <margin>
+                        <h4>Астана</h4>
+                    </margin>
+                    <column class="column-7">
+                        <margin>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1488.0975300520179!2d71.42403624844601!3d51.122942941142696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x424584220f422f61%3A0x92d493bd343d299a!2zRXVyb3BlIFBhbGFjZSwgU3lnaGFuYXEgU3QsIEFzdGFuYSAwMjAwMDAsINCa0LDQt9Cw0YXRgdGC0LDQvQ!5e0!3m2!1sru!2skz!4v1452872693058" width="100%" height="252" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        </margin>
+                    </column><column class="column-5">
+                        <margin>
+                            <img src="img/astana.jpg" width="240">
+                            <div class="info">
+                                <b>Время работы: 9:30 - 18:30. Суббота: 9:30 - 15:00</b><br>
+                                р-н Есиль, улица Сыганак, дом 14, блок В, офис 3<br>
+                                +7 771 77-88-102, +7 771 77-88-114
+                            </div>
+                        </margin>
+                    </column>
+                </wrapper>
+            </section>
+            
+            <section id="final" class="">
+                <wrapper class="text-center">
+                    <h1 class="animated">Профессиональные тренажеры Technogym</h1>
+                    <h2 class="animated">в наличии от официального дистрибьютора</h2>
+                    <img src="img/background/main.jpg" width="100%" class="mobile-only">
+                    <column class="column-6 animated from-bottom">
+                        <card class="full">
+                            <p>
+                                Оставьте заявку и получите выгодные условия<br>
+                                <b>покупки тренажера в кредит</b>
+                            </p>
+                            <button class="cta" onclick="popup(popup_main, 'Получить условия покупки в кредит без переплаты на главной')">Оставить заявку</button>
+                        </card>
+                    </column>
+                </wrapper>
+            </section>
+            
+            <!--section id="final-02" class="">
+                <wrapper class="text-center">
+                    <h1>Профессиональные тренажеры Technogym</h1>
+                    <h2>в наличии от официального дистрибьютора</h2>
+                </wrapper>
+                <wrapper class="text-center">
+                    <div class="category category-01 column-3" onclick="scrollTo('home')">
+                    </div><div class="category category-02 column-3" onclick="scrollTo('business')">
+                    </div><div class="category category-03 column-3" onclick="scrollTo('medicine')">
+                    </div><div class="category category-04 column-3" onclick="scrollTo('private')"></div>
+                    <column class="column-6">
+                        <card class="full">
+                            <p>
+                                Оставьте заявку и получите выгодные условия<br>
+                                <b>покупки тренажера в кредит без переплаты</b>
+                            </p>
+                            <button class="cta" onclick="popup(popup_main, 'Получить условия покупки в кредит без переплаты в конце')">Оставить заявку</button>
+                        </card>
+                    </column>
+                </wrapper>
+            </section-->
+            
+            <section id="footer" class="dark">
+                <wrapper>
+                    <column class="column-3 middle">
+                        <logo></logo>
+                    </column><column class="column-6 middle text-center">
+                        <margin>
+                            <small>
+                                Продажа и установка.
+                            </small>
+                            <small>
+                                Сервисное обслуживание тренажеров
+                            </small><br>
+                            <small>
+                                Доставка по всему Казахстану
+                            </small>
+                        </margin>
+                    </column><column class="column-3 middle text-right mobile-text-center">
+                        <icon class="icon-phone middle"></icon>
+                        <a href="tel: +77717788108" class="middle">+7 771 77 88 111</a><br>
+                        <a onclick="popup(popup_main, 'Бесплатная консультация в шапке')" class="cta">Бесплатная консультация</a>
+                    </column>
+                </wrapper>
+            </section>
+        </main>
+        
+        <footer class="dark">
+            <wrapper class="text-center">
+                <small>
+                    © 2015-2016. TOO WELLNESS SOLUTIONS<br>
+                    <a class="cta" href="politics.pdf">Политика конфиденциальности</a>
+                </small>
+            </wrapper>
+        </footer>
+        
+        <fade class="hidden" onclick="popdown()"></fade>
+        
+        <popup id="popup_main" class="hidden">
+            <column class="column-4 mobile-hidden">
+            </column><column class="column-4 dark">
+                <slider>
+                    <slide id="slide-01">
+                        <margin>
+                            <h5>Введите телефон</h5>
+                            <p>Оставьте Ваш телефон и мы перезвоним Вам в рабочее время</p>
+                            <form id="popup_main_form">
+                                <mg-input icon="account">
+                                    <input type="text" name="name" placeholder="Имя:">
+                                </mg-input>
+                                <mg-input icon="phone">
+                                    <input type="tel" name="phone" placeholder="Телефон:">
+                                </mg-input>
+                                <input type="hidden" name="trigger">
+                                <input type="button" id="popup_main_cta" onclick="AjaxPopupFormSend('popup_main_form', 'callback.php')" value="Отправить">
+                            </form>
+                        </margin>
+                    </slide>
+                    <slide id="slide-02" class="next">
+                        <margin>
+                            <h5>Спасибо!</h5>
+                            <p>Оператор свяжется с Вами в течение 30 минут</p>
+                            <input type="button" class="cta" onclick="popdown()" value="Готово">
+                        </margin>
+                    </slide>
+                </slider>
+            </column>
+            <icon class="icon-close" onclick="popdown()"></icon>
+        </popup>
+
+        <script src="js/main.js"></script>
+        <script src="js/animate.js"></script>
+        
+        <!-- Yandex.Metrika counter -->
+        <script type="text/javascript">
+            (function (d, w, c) {
+                (w[c] = w[c] || []).push(function() {
+                    try {
+                        w.yaCounter34411595 = new Ya.Metrika({
+                            id:34411595,
+                            clickmap:true,
+                            trackLinks:true,
+                            accurateTrackBounce:true,
+                            webvisor:true
+                        });
+                    } catch(e) { }
+                });
+
+                var n = d.getElementsByTagName("script")[0],
+                    s = d.createElement("script"),
+                    f = function () { n.parentNode.insertBefore(s, n); };
+                s.type = "text/javascript";
+                s.async = true;
+                s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+                if (w.opera == "[object Opera]") {
+                    d.addEventListener("DOMContentLoaded", f, false);
+                } else { f(); }
+            })(document, window, "yandex_metrika_callbacks");
+        </script>
+        <noscript><div><img src="https://mc.yandex.ru/watch/34411595" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+        <!-- /Yandex.Metrika counter -->
+        
+        <script type="text/javascript">
+            /* <![CDATA[ */
+            var google_conversion_id = 927901155;
+            var google_custom_params = window.google_tag_params;
+            var google_remarketing_only = true;
+            /* ]]> */
+        </script>
+        <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
+        <noscript>
+            <div style="display:inline;">
+                <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/927901155/?value=0&amp;guid=ON&amp;script=0"/>
+            </div>
+        </noscript>
+        
+    </body>
+</html>
